@@ -1,0 +1,24 @@
+{
+  "name": "@impulsar/stellar-sdk",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./horizon": "./horizon/index.ts",
+    "./soroban": "./soroban/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@stellar/stellar-sdk": "^14.4.3"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "eslint": "^9.17.0",
+    "rimraf": "^5.0.5"
+  }
+}

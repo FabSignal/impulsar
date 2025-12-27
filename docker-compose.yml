@@ -1,0 +1,113 @@
+services:
+  # Transfer Service - Handles blockchain transfers and NAV calculations
+  transfer-service:
+    build:
+      context: .
+      dockerfile: services/transfer-service/Dockerfile.dev  # Uses dev Dockerfile with tsx watch
+    container_name: impulsar-transfer-service
+    ports:
+      - "3001:3001"
+    environment:
+      # Node environment
+      - NODE_ENV=development
+
+      # Service configuration
+      - TRANSFER_SERVICE_PORT=3001
+
+      # Supabase (database access)
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_SERVICE_ROLE_KEY=${SUPABASE_SERVICE_ROLE_KEY}
+
+      # Stellar Network (blockchain interaction)
+      - STELLAR_NETWORK_PASSPHRASE=${STELLAR_NETWORK_PASSPHRASE}
+      - STELLAR_HORIZON_URL=${STELLAR_HORIZON_URL}
+      - STELLAR_SOROBAN_RPC_URL=${STELLAR_SOROBAN_RPC_URL}
+
+      # CRITICAL: Operational wallet secret (transfer service ONLY)
+      # This service signs blockchain transactions
+      - STELLAR_OPERATIONAL_SECRET_KEY=${STELLAR_OPERATIONAL_SECRET_KEY}
+
+      # NOTE: No JWT secrets (auth-service responsibility)
+    volumes:
+      # Hot reload: mount source code (tsx watch inside container picks up changes)
+      - ./services/transfer-service/src:/app/services/transfer-service/src:cached
+      - ./packages:/app/packages:cached
+    networks:
+      - impulsar-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-fsSL", "http://localhost:3001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Auth Service - Handles user authentication and JWT management
+  auth-service:
+    build:
+      context: .
+      dockerfile: services/auth-service/Dockerfile.dev  # Uses dev Dockerfile with tsx watch
+    container_name: impulsar-auth-service
+    ports:
+      - "3002:3002"
+    environment:
+      # Node environment
+      - NODE_ENV=development
+
+      # Service configuration
+      - AUTH_SERVICE_PORT=3002
+
+      # Supabase (database access)
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_SERVICE_ROLE_KEY=${SUPABASE_SERVICE_ROLE_KEY}
+
+      # Stellar Network (query-only, no signing)
+      - STELLAR_NETWORK_PASSPHRASE=${STELLAR_NETWORK_PASSPHRASE}
+      - STELLAR_HORIZON_URL=${STELLAR_HORIZON_URL}
+      - STELLAR_SOROBAN_RPC_URL=${STELLAR_SOROBAN_RPC_URL}
+
+      # CRITICAL: JWT secrets (auth service ONLY)
+      # This service signs authentication tokens
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_EXPIRY=${JWT_EXPIRY:-24h}
+      - JWT_REFRESH_EXPIRY=${JWT_REFRESH_EXPIRY:-7d}
+
+      # NOTE: No Stellar operational secret (transfer-service responsibility)
+    volumes:
+      # Hot reload: mount source code (tsx watch inside container picks up changes)
+      - ./services/auth-service/src:/app/services/auth-service/src:cached
+      - ./packages:/app/packages:cached
+    networks:
+      - impulsar-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-fsSL", "http://localhost:3002/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Frontend - Next.js web application (optional in docker-compose, usually run separately)
+  # Uncomment if you want to run frontend in Docker for full-stack local testing
+  # web:
+  #   build:
+  #     context: .
+  #     dockerfile: apps/web/Dockerfile
+  #   container_name: impulsar-web
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     - NODE_ENV=development
+  #     - NEXT_PUBLIC_API_URL=http://localhost:3001
+  #   volumes:
+  #     - ./apps/web/app:/app/apps/web/app
+  #     - ./packages:/app/packages
+  #   networks:
+  #     - impulsar-network
+  #   depends_on:
+  #     - transfer-service
+  #     - auth-service
+
+networks:
+  impulsar-network:
+    driver: bridge

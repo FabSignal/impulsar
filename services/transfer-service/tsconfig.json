@@ -1,0 +1,23 @@
+{
+  "extends": "@impulsar/tsconfig/base.json",
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "sourceMap": true,
+    "noUnusedParameters": false,
+    "paths": {
+      "@impulsar/stellar-sdk": ["../../packages/stellar-sdk"],
+      "@impulsar/supabase-client": ["../../packages/supabase-client"],
+      "@impulsar/database": ["../../packages/database"],
+      "@impulsar/contracts": ["../../packages/contracts"],
+      "@impulsar/dtos": ["../../packages/dtos"],
+      "@impulsar/core": ["../../packages/core"],
+      "@impulsar/config": ["../../packages/config"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

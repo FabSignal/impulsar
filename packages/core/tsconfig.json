@@ -1,0 +1,10 @@
+{
+  "extends": "@impulsar/tsconfig/base.json",
+  "compilerOptions": {
+    "paths": {
+      "@impulsar/contracts": ["../contracts"]
+    }
+  },
+  "include": ["."],
+  "exclude": ["node_modules"]
+}

@@ -1,0 +1,22 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install curl for healthchecks (wget not guaranteed in alpine)
+RUN apk add --no-cache curl
+
+# Copy monorepo structure for workspace resolution
+COPY package.json package-lock.json turbo.json ./
+COPY packages ./packages
+COPY services/auth-service ./services/auth-service
+
+# Install all dependencies (includes dev dependencies like tsx)
+RUN npm ci
+
+WORKDIR /app/services/auth-service
+
+# Expose port
+EXPOSE 3002
+
+# Run with tsx watch for hot reload
+CMD ["npm", "run", "dev"]
