@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "noImplicitAny": false,
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -21,13 +23,27 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"],
-      "@impulsar/ui": ["../../packages/ui"],
-      "@impulsar/stellar-sdk": ["../../packages/stellar-sdk"],
-      "@impulsar/contracts": ["../../packages/contracts"],
-      "@impulsar/dtos": ["../../packages/dtos"],
-      "@impulsar/core": ["../../packages/core"],
-      "@impulsar/config": ["../../packages/config"]
+      "@/*": [
+        "./*"
+      ],
+      "@impulsar/ui": [
+        "../../packages/ui"
+      ],
+      "@impulsar/stellar-sdk": [
+        "../../packages/stellar-sdk"
+      ],
+      "@impulsar/contracts": [
+        "../../packages/contracts"
+      ],
+      "@impulsar/dtos": [
+        "../../packages/dtos"
+      ],
+      "@impulsar/core": [
+        "../../packages/core"
+      ],
+      "@impulsar/config": [
+        "../../packages/config"
+      ]
     }
   },
   "include": [
@@ -38,5 +54,7 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

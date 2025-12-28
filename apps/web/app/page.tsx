@@ -1,8 +1,3 @@
-import { LoginPage } from "@/components/login-page"
-
-export default function Home() {
-  return <LoginPage />
-}
 "use client";
 
 import { EmbeddedAuthForm, useAuth, useWallet } from "@crossmint/client-sdk-react-ui";
