@@ -907,7 +907,7 @@ Interview requests and inquiries welcome.
 Join the conversation:
 - **GitHub Discussions:** Share ideas and feedback
 - **Issues:** Report bugs or request features
-- **Twitter/X:** [@ImpulsAr_ARG](https://twitter.com/ImpulsAr_ARG) (coming soon)
+- **Twitter/X:** [@ImpulsAr_ARG](https://x.com/ImpulsAr_ARG) 
 
 ---
 
