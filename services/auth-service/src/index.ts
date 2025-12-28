@@ -1,10 +1,17 @@
 // CRITICAL: Load environment variables first (from .env file if present)
-import 'dotenv/config';
+import { config as loadEnv } from 'dotenv';
+import { resolve } from 'node:path';
 
 // CRITICAL: All imports must be at the top in ESM/TypeScript
 import express from 'express';
 import cors from 'cors';
 import { validateAuthEnv } from '@impulsar/config';
+
+const rootEnvPath = resolve(process.cwd(), '../../.env');
+const localEnvPath = resolve(process.cwd(), '.env');
+
+loadEnv({ path: rootEnvPath });
+loadEnv({ path: localEnvPath, override: true });
 
 // CRITICAL: Validate environment FIRST before any other setup
 // Auth service validates: SUPABASE_*, JWT_SECRET, AUTH_SERVICE_PORT
