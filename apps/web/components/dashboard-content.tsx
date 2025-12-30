@@ -130,20 +130,20 @@ export function DashboardContent() {
   return (
     <div className="min-h-screen pb-20">
       {/* Header */}
-      <div className="border-b border-border/40 bg-card/50 backdrop-blur-sm sticky top-0 z-10">
+      <div className="border-b border-border/40 bg-gray-100 backdrop-blur-sm sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="relative w-10 h-10">
-                <Image src="/images/img-20251227-120843-641.jpg" alt="ImpulsAR" fill className="object-contain" />
+                <Image src="/images/iconoLogo.png" alt="ImpulsAR" fill className="object-contain" />
               </div>
               <div>
-                <h1 className="font-bold text-lg">ImpulsAR</h1>
-                <p className="text-xs text-muted-foreground">{user.email}</p>
+                <h1 className="font-bold text-lg text-blue-950">ImpulsAR</h1>
+                <p className="text-xs text-shadow-gray-600">{user.email}</p>
               </div>
             </div>
             <Button variant="ghost" size="icon" onClick={handleLogout}>
-              <LogOut className="w-4 h-4" />
+              <LogOut className="w-4 h-4 text-neutral-600" />
             </Button>
           </div>
         </div>
@@ -182,7 +182,7 @@ export function DashboardContent() {
           <Button
             size="lg"
             variant="outline"
-            className="h-auto py-6 flex-col gap-2 bg-transparent"
+            className="h-auto py-6 flex-col gap-2 bg-gray-500"
             onClick={() => router.push("/transfer")}
           >
             <ArrowDownLeft className="w-6 h-6" />
@@ -193,18 +193,18 @@ export function DashboardContent() {
 
         {/* Stats */}
         <div className="grid grid-cols-2 gap-4">
-          <Card className="border-border/40">
+          <Card className="border-border/40 bg-blue-500">
             <CardHeader className="pb-3">
               <CardDescription>Rendimiento Total</CardDescription>
               <CardTitle className="text-2xl">
-                <span className="text-green-500">+{formatARU(walletData.totalEarned)}</span>
+                <span className="text-cyan-400">+{formatARU(walletData.totalEarned)}</span>
               </CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-xs text-muted-foreground">ARU acumulados</p>
             </CardContent>
           </Card>
-          <Card className="border-border/40">
+          <Card className="border-border/40 bg-blue-500">
             <CardHeader className="pb-3">
               <CardDescription>Saldo en Pesos</CardDescription>
               <CardTitle className="text-2xl">{formatARS(walletData.arsBalance)}</CardTitle>
@@ -216,33 +216,33 @@ export function DashboardContent() {
         </div>
 
         {/* Government Benefits */}
-        <Card className="border-border/40">
+        <Card className="border-border/40 bg-gray-50">
           <CardHeader>
-            <CardTitle className="text-lg flex items-center gap-2">
-              <Wallet className="w-5 h-5" />
+            <CardTitle className="text-lg flex items-center gap-2 text-blue-950">
+              <Wallet className="w-5 h-5 text-blue-700" />
               Beneficios del Gobierno
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
-            <div className="flex items-center justify-between p-3 rounded-lg bg-muted/50">
+            <div className="flex items-center justify-between p-3 rounded-lg bg-gray-50">
               <div>
-                <p className="font-medium">Asignación Universal por Hijo</p>
+                <p className="font-medium text-stone-950">Asignación Universal por Hijo</p>
                 <p className="text-sm text-muted-foreground">Acreditado el 15/12/2024</p>
               </div>
-              <p className="font-bold text-green-500">+8,500 ARU</p>
+              <p className="font-bold text-cyan-600">+8,500 ARU</p>
             </div>
-            <div className="flex items-center justify-between p-3 rounded-lg bg-muted/50">
+            <div className="flex items-center justify-between p-3 rounded-lg bg-gray-50">
               <div>
-                <p className="font-medium">Programa ImpulsAR Comunitario</p>
-                <p className="text-sm text-muted-foreground">Acreditado el 10/12/2024</p>
+                <p className="font-medium text-stone-950">Programa ImpulsAR Comunitario</p>
+                <p className="text-sm text-shadow-gray-600">Acreditado el 10/12/2024</p>
               </div>
-              <p className="font-bold text-green-500">+5,000 ARU</p>
+              <p className="font-bold text-cyan-600">+5,000 ARU</p>
             </div>
           </CardContent>
         </Card>
 
         {/* Info Banner */}
-        <Card className="border-cyan-500/20 bg-cyan-500/5">
+        <Card className="border-b-blue-400 bg-blue-600">
           <CardContent className="pt-6">
             <div className="flex gap-3">
               <Zap className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />
