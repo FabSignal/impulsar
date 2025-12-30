@@ -143,7 +143,7 @@ return (
               className="object-contain"
             />
             <div>
-              <h1 className="text-base font-semibold text-blue-900">
+              <h1 className="text-lg font-semibold text-blue-900">
                 ImpulsAR
               </h1>
               <p className="text-xs text-slate-500 truncate max-w-[200px]">
@@ -167,7 +167,7 @@ return (
         {/* Actions */}
         <div className="grid grid-cols-2 gap-3">
           <Button
-            className="h-20 flex flex-col gap-1 bg-blue-700 hover:bg-blue-800"
+            className="h-20 flex flex-col gap-1 bg-blue-700 hover:bg-blue-800 hover:scale-[1.02] transition-transform hover:text-stone-100"
             onClick={() => router.push("/convert")}
           >
             <ArrowUpRight className="w-5 h-5" />
@@ -177,7 +177,7 @@ return (
 
           <Button
             variant="outline"
-            className="h-20 flex flex-col gap-1 border-blue-700 text-blue-700 hover:bg-blue-50"
+            className="h-20 flex flex-col gap-1 border-blue-700 text-blue-700 hover:bg-blue-50 hover:scale-[1.02] transition-transform hover:text-blue-900"
             onClick={() => router.push("/transfer")}
           >
             <ArrowDownLeft className="w-5 h-5" />
@@ -191,12 +191,12 @@ return (
           <Card>
             <CardHeader className="pb-2">
               <CardDescription>Rendimiento total</CardDescription>
-              <CardTitle className="text-xl text-blue-800">
+              <CardTitle className="text-xl text-cyan-300">
                 +{formatARU(walletData.totalEarned)} ARU
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-xs text-slate-500">ARU acumulados</p>
+              <p className="text-sm text-slate-300">ARU acumulados</p>
             </CardContent>
           </Card>
 
@@ -208,7 +208,7 @@ return (
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-xs text-slate-500">Disponible para retirar</p>
+              <p className="text-sm text-slate-300">Disponible para retirar</p>
             </CardContent>
           </Card>
         </div>
@@ -216,8 +216,8 @@ return (
         {/* Government Benefits */}
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-blue-900">
-              <Wallet className="w-5 h-5 text-blue-700" />
+            <CardTitle className="flex items-center gap-2 text-blue-50">
+              <Wallet className="w-5 h-5 text-blue-400" />
               Beneficios del Gobierno
             </CardTitle>
           </CardHeader>
@@ -228,11 +228,11 @@ return (
                 <p className="text-sm font-medium">
                   Asignación Universal por Hijo
                 </p>
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-slate-400">
                   Acreditado el 15/12/2024
                 </p>
               </div>
-              <span className="text-sm font-semibold text-blue-700">
+              <span className="text-sm font-semibold text-cyan-300">
                 +8.500 ARU
               </span>
             </div>
@@ -242,11 +242,11 @@ return (
                 <p className="text-sm font-medium">
                   Programa ImpulsAR Comunitario
                 </p>
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-slate-400">
                   Acreditado el 10/12/2024
                 </p>
               </div>
-              <span className="text-sm font-semibold text-blue-700">
+              <span className="text-sm font-semibold text-cyan-300">
                 +5.000 ARU
               </span>
             </div>
