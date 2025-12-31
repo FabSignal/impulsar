@@ -11,7 +11,9 @@
 
 ### 💡 "Digital public infrastructure for efficient social protection. Government saves $185M USD annually while protecting 9M citizens from inflation."
 
-[🎬 Watch Demo Video](#) | [🌐 Try Live App](https://impulsar-web.vercel.app) | [📊 View Pitch](#) | [🐦 Follow on X](https://x.com/ImpulsAr_ARG)
+[🎬 Watch Demo Video](https://youtu.be/2h9ZNvDv3o8 ) | [🌐 Try Live App](https://impulsar-web.vercel.app) | [📊 View Pitch](https://youtu.be/s15B7lL7XVk) | [🐦 Follow on X](https://x.com/ImpulsAr_ARG)
+
+
 ---
 
 ## 🌟 What is ImpulsAr?
@@ -802,6 +804,7 @@ ImpulsAr is built exclusively on Stellar for government-scale social transfers. 
 [![Project Overview](https://img.youtube.com/vi/2h9ZNvDv3o8/0.jpg)](https://youtu.be/2h9ZNvDv3o8)
 
 🔗 https://youtu.be/2h9ZNvDv3o8
+
 #### 💡 **Optional Elements (We're Doing Anyway)**
 
 **Repository:**
