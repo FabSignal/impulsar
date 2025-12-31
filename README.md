@@ -792,8 +792,16 @@ ImpulsAr is built exclusively on Stellar for government-scale social transfers. 
 - ✅ Team members visible (optional, but adds points)
 - ✅ Live demo of working prototype
 
-[🎬 Watch Video Pitch](#) *(Video link to be added)*
 
+[🎬 Watch Video Pitch](#) 
+
+[![Usage Flow and Demo](https://img.youtube.com/vi/s15B7lL7XVk/0.jpg)](https://youtu.be/s15B7lL7XVk)
+
+🔗 https://youtu.be/s15B7lL7XVk
+
+[![Project Overview](https://img.youtube.com/vi/2h9ZNvDv3o8/0.jpg)](https://youtu.be/2h9ZNvDv3o8)
+
+🔗 https://youtu.be/2h9ZNvDv3o8
 #### 💡 **Optional Elements (We're Doing Anyway)**
 
 **Repository:**
