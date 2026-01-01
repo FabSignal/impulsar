@@ -21,9 +21,12 @@ export function BalanceDisplay({ showCERDetails = false }: BalanceDisplayProps) 
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    loadBalance();
+    // Solo cargar balance cuando el wallet Y el CER estén disponibles
+    if (wallet?.address && cer && !cerLoading) {
+      loadBalance();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [wallet]);
+  }, [wallet, cer, cerLoading]);
 
   // When CER updates (from hook), recompute values
   useEffect(() => {
@@ -59,8 +62,14 @@ export function BalanceDisplay({ showCERDetails = false }: BalanceDisplayProps) 
       // DEMO: Valor en pesos hardcodeado (simulación de beneficios recibidos)
       const DEMO_PESOS = 100_000;
 
-      // PASO 2: CER hardcodeado con el valor on-chain
-      const cerValue = 676.2663;
+      // PASO 2: IMPORTANTE - Esperar a que el CER del hook esté disponible
+      // NO usar valor hardcodeado, usar el CER del contrato
+      if (!cer || cerLoading) {
+        console.log('⏳ Esperando CER del contrato...');
+        return;
+      }
+
+      const cerValue = cer; // Usar el CER del hook (blockchain/cache/mock)
       setCurrentCER(cerValue);
 
       // PASO 3: Calcular ARU basado en pesos y CER del blockchain
@@ -70,11 +79,18 @@ export function BalanceDisplay({ showCERDetails = false }: BalanceDisplayProps) 
       setAruUnits(calculatedARU);
       setPesoValue(DEMO_PESOS);
 
+      // IMPORTANTE: Calcular el valor REAL en pesos (ARU × CER) para guardarlo
+      const realPesosValue = calculatedARU * cerValue;
+
+      // Guardar saldo en localStorage para que TransferContent pueda leerlo
+      localStorage.setItem('impulsAR_wallet', JSON.stringify({ arsBalance: realPesosValue }));
+
       console.log('💰 Balance calculado:');
       console.log(`   Wallet address: ${wallet?.address}`);
-      console.log(`   Pesos (hardcoded): $${DEMO_PESOS.toLocaleString()}`);
-      console.log(`   CER (blockchain): ${cerValue}`);
+      console.log(`   Pesos (base): $${DEMO_PESOS.toLocaleString()}`);
+      console.log(`   CER (${source}): ${cerValue}`);
       console.log(`   ARU calculado: ${calculatedARU.toFixed(2)} ARU`);
+      console.log(`   Pesos REAL (ARU × CER): $${realPesosValue.toFixed(2)}`);
     } catch (error) {
       console.error('❌ Error loading balance:', error);
       setAruUnits(0);
@@ -97,7 +113,8 @@ export function BalanceDisplay({ showCERDetails = false }: BalanceDisplayProps) 
     );
   }
 
-  const cerValue = currentCER || 1100.5;
+  // IMPORTANTE: Usar SOLO el CER del contrato, NO fallback hardcodeado
+  const cerValue = currentCER || cer || 0;
   const calculatedPesos = aruUnits * cerValue;
 
   // Source badge

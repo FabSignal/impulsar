@@ -13,21 +13,21 @@ function getCalculator(): ValueCalculator {
 
 /**
  * GET /api/cer/current
- * Returns current CER value from blockchain
+ * Returns current CER value - ALWAYS attempts blockchain first
  */
 export async function GET() {
   try {
     const calculator = getCalculator();
 
-    // Get current CER (uses fallback strategy internally)
-    const cer = await calculator['getCurrentCER']();
+    // Get current CER (blockchain → supabase → mock fallback)
+    const result = await calculator['getCurrentCERWithSource']();
 
     return NextResponse.json({
       success: true,
       data: {
-        cer_value: cer,
+        cer_value: result.value,
         timestamp: new Date().toISOString(),
-        source: 'blockchain', // Could be 'cache' or 'mock' depending on fallback
+        source: result.source, // 'blockchain', 'cache', or 'mock'
       },
     });
   } catch (error) {
