@@ -13,7 +13,7 @@
 
 ### "Digital public infrastructure for efficient social protection. Government saves $185M USD annually while protecting 9M citizens from inflation."
 
-| [🌐 Try Demo App ](https://impulsar-web.vercel.app) 
+[🎬 Watch Pitch Video](https://www.youtube.com/watch?v=2sKzz8X2m0Q) | [🌐 Try Demo App ](https://impulsar-web.vercel.app) | [🐦 Follow on X](https://x.com/ImpulsAr_ARG)
 
 ---
 
