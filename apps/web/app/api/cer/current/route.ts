@@ -1,41 +1,47 @@
-// app/api/cer/current/route.ts
-import { createClient } from '@supabase/supabase-js';
+import { NextResponse } from 'next/server';
+import { ValueCalculator } from '@/../../services/value-calculator/src/index';
 
-// Uses Next.js ISR for automatic caching
-export const revalidate = 86400; // Cache for 24 hours
+// Force dynamic rendering (prevents build-time execution)
+export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+// Initialize ValueCalculator (singleton pattern)
+let calculatorInstance: ValueCalculator | null = null;
 
+function getCalculator(): ValueCalculator {
+  if (!calculatorInstance) {
+    calculatorInstance = new ValueCalculator();
+  }
+  return calculatorInstance;
+}
+
+/**
+ * GET /api/cer/current
+ * Returns current CER value - ALWAYS attempts blockchain first
+ */
 export async function GET() {
   try {
-    // Read directly from database (Next.js caches automatically)
-    const { data, error } = await supabase
-      .from('cer_publications')
-      .select('cer_value, date')
-      .order('date', { ascending: false })
-      .limit(1)
-      .single();
+    const calculator = getCalculator();
 
-    if (error || !data) {
-      return Response.json(
-        { error: 'CER not available' },
-        { status: 503 }
-      );
-    }
+    // Get current CER (blockchain → supabase → mock fallback)
+    const result = await calculator['getCurrentCERWithSource']();
 
-    return Response.json({
-      cer: data.cer_value,
-      date: data.date,
-      source: 'database',
+    return NextResponse.json({
+      success: true,
+      data: {
+        cer_value: result.value,
+        timestamp: new Date().toISOString(),
+        source: result.source, // 'blockchain', 'cache', or 'mock'
+      },
     });
-
   } catch (error) {
-    console.error('Error fetching CER:', error);
-    return Response.json(
-      { error: 'Internal server error' },
+    console.error('❌ Error in /api/cer/current:', error);
+
+    return NextResponse.json(
+      {
+        success: false,
+        error: 'Failed to fetch CER',
+      },
       { status: 500 }
     );
   }

@@ -24,6 +24,7 @@ export function TransferContent() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [walletData, setWalletData] = useState({ arsBalance: 0 });
   const [activeTab, setActiveTab] = useState("bank");
+  const [isLoadingBalance, setIsLoadingBalance] = useState(true);
 
   useEffect(() => {
     const userData = localStorage.getItem("impulsAR_user");
@@ -32,10 +33,20 @@ export function TransferContent() {
       return;
     }
 
-    const savedWallet = localStorage.getItem("impulsAR_wallet");
-    if (savedWallet) {
-      setWalletData(JSON.parse(savedWallet));
-    }
+    // Esperar a que el dashboard guarde el saldo en localStorage
+    const checkWallet = () => {
+      const savedWallet = localStorage.getItem("impulsAR_wallet");
+      if (savedWallet) {
+        const wallet = JSON.parse(savedWallet);
+        setWalletData(wallet);
+        setIsLoadingBalance(false);
+      } else {
+        // Si no hay wallet, seguir esperando
+        setTimeout(checkWallet, 100);
+      }
+    };
+
+    checkWallet();
   }, [router]);
 
   const handleTransfer = async () => {
@@ -149,9 +160,13 @@ export function TransferContent() {
           <Card className="border-border/40">
             <CardHeader>
               <CardDescription>Saldo Disponible</CardDescription>
-              <CardTitle className="text-3xl">
-                {formatARS(walletData.arsBalance)}
-              </CardTitle>
+              {isLoadingBalance ? (
+                <div className="h-9 bg-slate-200 rounded-lg w-48 animate-pulse"></div>
+              ) : (
+                <CardTitle className="text-3xl">
+                  {formatARS(walletData.arsBalance)}
+                </CardTitle>
+              )}
             </CardHeader>
           </Card>
 
