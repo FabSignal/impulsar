@@ -252,7 +252,7 @@ Day 1: State receives $100,000 for María
 Day 30: CER rises to 1050 (2% inflation)
         María wants to withdraw: 100 ARU × 1050 = $105,000
         State only has: $100,000 (account didn't grow)
-        ❌ DEFICIT: $5,000 - State must pay from Treasury
+        ❌ DEFICIT: $2,000 - State must pay from Treasury
 
 
 WITH Investment (Sustainable):
