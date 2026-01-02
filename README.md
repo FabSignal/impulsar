@@ -13,7 +13,7 @@
 
 ### "Digital public infrastructure for efficient social protection. Government saves $185M USD annually while protecting 9M citizens from inflation."
 
-[🎬 Watch Pitch Video](https://www.youtube.com/watch?v=2sKzz8X2m0Q) | [🌐 Try Live App](https://impulsar-web.vercel.app) | [🐦 Follow on X](https://x.com/ImpulsAr_ARG)
+[🎬 Watch Pitch Video](https://www.youtube.com/watch?v=2sKzz8X2m0Q) | [🌐 Try Live App]| [🐦 Follow on X](https://x.com/ImpulsAr_ARG)
 
 ---
 
@@ -129,8 +129,7 @@ ARU is a unit of account indexed to CER (Coeficiente de Estabilización de Refer
 
 **How the backing works:**
 - Government deposits transfer funds ($25B annually)
-- Funds invested primarily in short-term LECAPs (and money market instruments) to provide liquidity and yield,
-under an explicit reserve buffer / overcollateralization policy designed to absorb indexation mismatch vs CER
+- Funds invested primarily in short-term LECAPs, BONCAP and money market instruments (liquidity + yield), with an explicit reserve buffer / overcollateralization policy to ensure CER indexation under stress.
 - ARU tokens issued on blockchain, representing ownership stake
 - As CER increases, the displayed ARS value updates automatically (ARU × CER). The reserve portfolio is managed to sustainably fund redemptions under the buffer/overcollateralization policy.
 - **Without this investment, State would have deficit when beneficiaries withdraw**
@@ -305,11 +304,12 @@ Day 30: CER rises to 1050 (2% inflation)
 
 ### Smart Contracts (Soroban - Rust)
 
-| Contract | Purpose | Status |
-|----------|---------|--------|
-| **CEROracle** | Stores signed CER values from BCRA | ✅ Deployed (Testnet) |
-| **AttestationManager** | Manages authorized CER publishers (BCRA, ANSES, MEF) | ✅ Deployed (Testnet) |
-| **TransferEngine** | Handles government-to-citizen ARU transfers | 🚧 In Development |
+| Contract               | Purpose                                              | Status               | Explorer (Testnet)                                                                                                      |
+| ---------------------- | ---------------------------------------------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| **CEROracle**          | Stores signed CER values from BCRA                   | ✅ Deployed (Testnet) | [CCRG…34IP](https://stellar.expert/explorer/testnet/contract/CCRG5EHCIRAVSGPYSFZ6PFHZ643SSXGM665YXOJBHWRTOJEO7RKR34IP)  |
+| **AttestationManager** | Manages authorized CER publishers (BCRA, ANSES, MEF) | ✅ Deployed (Testnet) | [CASD…KVBYW](https://stellar.expert/explorer/testnet/contract/CASDKIOVIWEOTJASIXS7DLLMKRA4JBWUEZHJOYAPZFD4RGJQDWHKVBYW) |
+| **TransferEngine**     | Handles government-to-citizen ARU transfers          | 🚧 In Development    | —                                                                                                                       |
+
 
 ### Infrastructure
 
