@@ -471,15 +471,10 @@ impulsar/
 │       │   └── lib.rs
 │       └── Cargo.toml
 │
-├── docs-ai/                           # Technical documentation
-│   └── learning-path/
-│       ├── README.md                  # This file
-│       ├── 07-CER-Oracle-Architecture-Economic-Technical-Analysis.md
-│       ├── 08-Phase-3-Government-Transfers-Implementation.md
-│       └── src/
-│           ├── banner.jpg
-│           └── logo.jpg
-│
+├── src/
+│      ├── banner.jpg
+│      └── logo.jpg     
+│           
 ├── turbo.json                         # Turborepo configuration
 ├── package.json                       # Root package.json
 └── README.md                          # Project README
@@ -493,8 +488,8 @@ impulsar/
 - ✅ `apps/web/hooks/useCER.ts` - React hook for real-time CER from blockchain
 - ✅ `apps/web/components/BalanceDisplay.tsx` - ARU × CER conversion display
 - ✅ `apps/web/components/transfer-content.tsx` - Withdrawal flow UI
-- ✅ `apps/web/app/api/cer/current/route.ts` - CER API (blockchain → cache → mock fallback)
-- ✅ `docs-ai/learning-path/` - Complete technical documentation (20,000+ words)
+- ✅ `apps/web/app/api/cer/current/route.ts` - CER API (blockchain + cache + mock fallback)
+
 
 ---
 
