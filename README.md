@@ -19,7 +19,7 @@
 
 ## What is ImpulsAR?
 
-ImpulsAR is B2G blockchain infrastructure that modernizes how governments distribute social transfers. Built on Stellar, we deliver instant settlement, an estimated ~99.97% cost reduction in distribution-rail fees(illustrative, based on program assumptions and excluding off-ramp/cash-out costs), plus inflation protection for beneficiaries—eliminating the inefficiencies of traditional banking systems.
+ImpulsAR is B2G blockchain infrastructure that modernizes how governments distribute social transfers. Built on Stellar, we deliver instant settlement, an estimated ~99.97% cost reduction in distribution-rail fees(illustrative, based on program assumptions and excluding off-ramp/cash-out costs), plus inflation protection for beneficiaries, eliminating the inefficiencies of traditional banking systems.
 
 ### "Digital infrastructure for efficient social protection."
 
