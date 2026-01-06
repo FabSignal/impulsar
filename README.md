@@ -13,7 +13,7 @@
 
 ### "Digital public infrastructure for efficient social protection. Government saves $185M USD annually while protecting 9M citizens from inflation."
 
-[🎬 Watch Pitch Video](https://www.youtube.com/watch?v=2sKzz8X2m0Q) | [🌐 Try Demo App ](https://impulsar-web.vercel.app) | [🐦 Follow on X](https://x.com/ImpulsAr_ARG)
+[🎬 Watch Pitch Video](https://www.youtube.com/watch?v=MGe0E2fHNoI) | [🌐 Try Demo App ](https://impulsar-web.vercel.app) | [🐦 Follow on X](https://x.com/ImpulsAr_ARG)
 
 ---
 
@@ -45,8 +45,8 @@ ANSES → Bank Intermediary (3-5 days) → Beneficiary
 **María receives $100,000 AUH today.**
 
 **30 days later with aprox 2% inflation:**
-- Her $100,000 can now only buy 95 packages of noodles (down from 100)
-- She lost $5,000 in purchasing power
+- Her $100,000 can now only buy 98 packages of noodles (down from 100)
+- She lost ~$2,000 in purchasing power
 - The bank intermediary captured the float returns
 - **María, the most vulnerable, bears 100% of the inflation risk**
 
@@ -107,10 +107,10 @@ The State pays a minimal monthly fee per active beneficiary, making the service 
 - Shown as: $50,000 ARS (73.91 × 676.27)
 - Can buy: 100 packages of noodles
 
-**Day 30 (CER rises to 680.45 due to 2% inflation):**
+**Day 30 (CER rises ~2% due to inflation):**
 - Her ARU units: 73.91 (unchanged)
-- CER: 680.45 (updated daily from blockchain)
-- Shown as: $50,309 ARS (73.91 × 680.45)
+- CER: ~689.80 (updated daily from blockchain)
+- Shown as: ~$51,000 ARS (73.91 × 689.80)
 - Can buy: **100 packages of noodles** (same purchasing power!)
 
 **María didn't need to understand economics, open a savings account, or make any decisions. The system protected her automatically.**
@@ -136,8 +136,8 @@ ARU is a unit of account indexed to CER (Coeficiente de Estabilización de Refer
 
 **Real Impact:**
 - María's $50,000 maintains buying power over 30 days
-- Saves ~$2,500/month vs traditional system (2% inflation)
-- Annualized: $30,000+ protection for typical beneficiary
+- Saves ~$1,000/month vs traditional system (2% inflation)
+- Annualized: ~$12,000+ protection for typical beneficiary
 
 ### 2. Verifiable Transparency
 
@@ -221,12 +221,12 @@ CER (Coeficiente de Estabilización de Referencia) is an official daily index pu
    - CER at time of transfer: 676.27
    - Displayed as: $50,000 ARS (73.91 × 676.27)
 
-2. **Inflation happens:** 30 days pass, CER rises to 680.45 (published daily on CEROracle contract)
+2. **Inflation happens:** 30 days pass, CER rises to ~689.80 (published daily on CEROracle contract)
 
 3. **María's balance auto-adjusts:**
    - ARU units: 73.91 (unchanged)
    - CER: 680.45 (from blockchain)
-   - Display value: $50,309 ARS (73.91 × 680.45)
+   - Display value: ~$51,000 ARS (73.91 × 689.80)
 
 4. **María withdraws cash:** System calculates in real-time
    - Withdrawing $25,000 converts to: 25,000 ÷ 680.45 = 36.73 ARU units
@@ -1304,8 +1304,6 @@ We welcome contributions from the community!
 ### Areas Needing Contribution
 
 - [ ] Mobile app development (React Native)
-- [ ] Additional wallet integrations (Freighter, Albedo)
-- [ ] Accessibility and frontend improvements (WCAG 2.1 AA)
 
 ---
 
