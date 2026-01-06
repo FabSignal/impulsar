@@ -1,6 +1,6 @@
 # ImpulsAR - Digital Public Infrastructure for Social Transfers in Argentina
 
-![ImpulsAR Banner](src/banner.jpg)
+![ImpulsAR Banner](src/banner_w.jpg)
 
 > **Blockchain-powered social transfers with instant settlement and inflation protection through CER-adjusted ARS balances (published and verifiable), with public on-chain traceability and clear redemption into pesos.**
 
